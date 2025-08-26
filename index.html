@@ -2,132 +2,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Travel Planner Assistant</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 2rem;
-      background-color: #f4f4f4;
-    }
-    h1 {
-      color: #2c3e50;
-    }
-    label {
-      display: block;
-      margin-top: 1rem;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 0.5rem;
-      margin-top: 0.25rem;
-    }
-    button {
-      margin-top: 1.5rem;
-      padding: 0.75rem 1.5rem;
-      background-color: #3498db;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    #itinerary {
-      margin-top: 2rem;
-      background-color: white;
-      padding: 1rem;
-      border-radius: 5px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Travel Planner Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .checkbox-group label {
+            margin-right: 15px;
+        }
+        #itinerary-output {
+            margin-top: 30px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
-  <h1>🌍 Travel Planner Assistant</h1>
-  <form id="travelForm">
-    <label>Source City:
-      <input type="text" id="source" required />
-    </label>
-    <label>Destination City:
-      <input type="text" id="destination" required />
-    </label>
-    <label>Travel Dates:
-      <input type="text" id="dates" placeholder="e.g., 23rd Oct to 30th Oct" required />
-    </label>
-    <label>Mode of Transport:
-      <select id="transport">
-        <option>Flight</option>
-        <option>Train</option>
-        <option>Car</option>
-        <option>Bus</option>
-      </select>
-    </label>
-    <label>Number of Travelers:
-      <input type="number" id="travelers" min="1" required />
-    </label>
-    <label>Budget Range:
-      <select id="budget">
-        <option>Low</option>
-        <option>Medium</option>
-        <option>High</option>
-      </select>
-    </label>
-    <label>Interests:
-      <select id="interests" multiple>
-        <option>History</option>
-        <option>Culture</option>
-        <option>Food</option>
-        <option>Nature</option>
-        <option>Adventure</option>
-        <option>Shopping</option>
-        <option>Nightlife</option>
-        <option>Family-friendly</option>
-        <option>Budget travel</option>
-        <option>Luxury</option>
-      </select>
-    </label>
-    <label>Meal Preference:
-      <select id="meal">
-        <option>Vegetarian</option>
-        <option>Non-Vegetarian</option>
-        <option>Mixed</option>
-        <option>Other</option>
-      </select>
-    </label>
-    <button type="submit">Generate Itinerary</button>
-  </form>
+    <h1>Travel Planner Assistant</h1>
+    <form id="travel-form">
+        <div class="form-group">
+            <label for="source">Source City:</label>
+            <input type="text" id="source" required>
+        </div>
+        <div class="form-group">
+            <label for="destination">Destination City:</label>
+            <input type="text" id="destination" required>
+        </div>
+        <div class="form-group">
+            <label for="from-date">From Date:</label>
+            <input type="date" id="from-date" required>
+        </div>
+        <div class="form-group">
+            <label for="to-date">To Date:</label>
+            <input type="date" id="to-date" required>
+        </div>
+        <div class="form-group">
+            <label>Mode of Transport:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="transport" value="Flight"> Flight</label>
+                <label><input type="checkbox" name="transport" value="Train"> Train</label>
+                <label><input type="checkbox" name="transport" value="Car"> Car</label>
+                <label><input type="checkbox" name="transport" value="Bus"> Bus</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="travelers">Number of Travelers:</label>
+            <input type="number" id="travelers" required>
+        </div>
+        <div class="form-group">
+            <label for="budget">Budget Range:</label>
+            <select id="budget">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Traveler Interests:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="interests" value="History"> History</label>
+                <label><input type="checkbox" name="interests" value="Culture"> Culture</label>
+                <label><input type="checkbox" name="interests" value="Food"> Food</label>
+                <label><input type="checkbox" name="interests" value="Nature"> Nature</label>
+                <label><input type="checkbox" name="interests" value="Adventure"> Adventure</label>
+                <label><input type="checkbox" name="interests" value="Shopping"> Shopping</label>
+                <label><input type="checkbox" name="interests" value="Nightlife"> Nightlife</label>
+                <label><input type="checkbox" name="interests" value="Family-friendly"> Family-friendly</label>
+                <label><input type="checkbox" name="interests" value="Budget travel"> Budget travel</label>
+                <label><input type="checkbox" name="interests" value="Luxury"> Luxury</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="meal-pref">Meal Preference:</label>
+            <select id="meal-pref">
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Non-Vegetarian">Non-Vegetarian</option>
+                <option value="Mixed">Mixed</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <button type="submit">Generate Itinerary</button>
+    </form>
 
-  <div id="itinerary"></div>
+    <div id="itinerary-output"></div>
 
-  <script>
-    document.getElementById("travelForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const source = document.getElementById("source").value;
-      const destination = document.getElementById("destination").value;
-      const dates = document.getElementById("dates").value;
-      const transport = document.getElementById("transport").value;
-      const travelers = document.getElementById("travelers").value;
-      const budget = document.getElementById("budget").value;
-      const interests = Array.from(document.getElementById("interests").selectedOptions).map(opt => opt.value);
-      const meal = document.getElementById("meal").value;
+    <script>
+        document.getElementById("travel-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const source = document.getElementById("source").value;
+            const destination = document.getElementById("destination").value;
+            const fromDate = document.getElementById("from-date").value;
+            const toDate = document.getElementById("to-date").value;
+            const transport = Array.from(document.querySelectorAll("input[name='transport']:checked")).map(el => el.value).join(", ");
+            const travelers = document.getElementById("travelers").value;
+            const budget = document.getElementById("budget").value;
+            const interests = Array.from(document.querySelectorAll("input[name='interests']:checked")).map(el => el.value).join(", ");
+            const mealPref = document.getElementById("meal-pref").value;
 
-      const itinerary = `
-        <h2>🗓️ Sample Itinerary</h2>
-        <p><strong>From:</strong> ${source}</p>
-        <p><strong>To:</strong> ${destination}</p>
-        <p><strong>Dates:</strong> ${dates}</p>
-        <p><strong>Transport:</strong> ${transport}</p>
-        <p><strong>Travelers:</strong> ${travelers}</p>
-        <p><strong>Budget:</strong> ${budget}</p>
-        <p><strong>Interests:</strong> ${interests.join(", ")}</p>
-        <p><strong>Meal Preference:</strong> ${meal}</p>
-        <hr/>
-        <h3>Day 1</h3>
-        <p><strong>Morning:</strong> Depart from ${source} via ${transport}</p>
-        <p><strong>Afternoon:</strong> Travel and onboard meals (${meal})</p>
-        <p><strong>Evening:</strong> Arrive in ${destination}, check-in to hotel</p>
-        <p><strong>Weather:</strong> Partly cloudy, 28°C</p>
-        <p><strong>Meal Stop:</strong> Recommended local ${meal.toLowerCase()} restaurant</p>
-      `;
-      document.getElementById("itinerary").innerHTML = itinerary;
-    });
-  </script>
+            const itinerary = `
+                <h2>Sample Itinerary</h2>
+                <p><strong>From:</strong> ${source}</p>
+                <p><strong>To:</strong> ${destination}</p>
+                <p><strong>Dates:</strong> ${fromDate} to ${toDate}</p>
+                <p><strong>Transport:</strong> ${transport}</p>
+                <p><strong>Travelers:</strong> ${travelers}</p>
+                <p><strong>Budget:</strong> ${budget}</p>
+                <p><strong>Interests:</strong> ${interests}</p>
+                <p><strong>Meal Preference:</strong> ${mealPref}</p>
+                <p><strong>Weather Forecast:</strong> Sample weather data will appear here.</p>
+                <p><strong>Meal Stops:</strong> Sample vegetarian restaurants in ${destination}.</p>
+            `;
+            document.getElementById("itinerary-output").innerHTML = itinerary;
+        });
+    </script>
 </body>
 </html>
