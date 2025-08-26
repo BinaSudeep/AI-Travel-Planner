@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Planner Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #0078D7;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        header img {
+            height: 40px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        main {
+            padding: 1rem;
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #0078D7;
+        }
+        label {
+            display: block;
+            margin-top: 1rem;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-top: 0.25rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #0078D7;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Logo">
+        <span>Travel Planner Assistant</span>
+    </header>
+    <main>
+        <h2>Plan Your Trip</h2>
+        <form>
+            <label>Source City/Location:
+                <input type="text" name="source">
+            </label>
+            <label>Destination City/Location:
+                <input type="text" name="destination">
+            </label>
+            <label>Travel Dates:
+                <input type="text" name="dates" placeholder="e.g. 23rd Oct to 30th Oct">
+            </label>
+            <label>Mode of Transport:
+                <select multiple name="transport">
+                    <option>Flight</option>
+                    <option>Train</option>
+                    <option>Car</option>
+                    <option>Bus</option>
+                    <option>Cruise</option>
+                    <option>Walking/Hiking</option>
+                </select>
+            </label>
+            <label>Number of Travelers:
+                <input type="number" name="travelers">
+            </label>
+            <label>Budget Range:
+                <select name="budget">
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                </select>
+            </label>
+            <label>Traveler Interests:
+                <select multiple name="interests">
+                    <option>History</option>
+                    <option>Culture</option>
+                    <option>Food</option>
+                    <option>Nature</option>
+                    <option>Adventure</option>
+                    <option>Shopping</option>
+                    <option>Nightlife</option>
+                    <option>Family-friendly</option>
+                    <option>Budget travel</option>
+                    <option>Luxury</option>
+                </select>
+            </label>
+            <label>Meal Preference:
+                <select name="meal">
+                    <option>Vegetarian</option>
+                    <option>Non-Vegetarian</option>
+                    <option>Mixed</option>
+                    <option>Other</option>
+                </select>
+            </label>
+            <button type="submit">Generate Itinerary</button>
+            <button type="reset">Start Over</button>
+        </form>
+    </main>
+    <footer>
+        &copy; 2024 Travel Planner Assistant. All rights reserved.
+    </footer>
+</body>
+</html>
