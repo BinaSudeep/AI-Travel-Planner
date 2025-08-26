@@ -1,146 +1,102 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Travel Planner Assistant</title>
+    <title>Travel Itinerary</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #2c3e50;
-        }
-        form {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            font-weight: bold;
-        }
-        input, select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-        }
-        .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .checkbox-group label {
-            margin-right: 15px;
-        }
-        #itinerary-output {
-            margin-top: 30px;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-        }
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
+        h1 { color: #2c3e50; }
+        .day-card { background-color: #fff; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .day-card h2 { margin-top: 0; color: #27ae60; }
+        .section { margin: 5px 0; }
     </style>
 </head>
 <body>
-    <h1>Travel Planner Assistant</h1>
-    <form id="travel-form">
-        <div class="form-group">
-            <label for="source">Source City:</label>
-            <input type="text" id="source" required>
-        </div>
-        <div class="form-group">
-            <label for="destination">Destination City:</label>
-            <input type="text" id="destination" required>
-        </div>
-        <div class="form-group">
-            <label for="from-date">From Date:</label>
-            <input type="date" id="from-date" required>
-        </div>
-        <div class="form-group">
-            <label for="to-date">To Date:</label>
-            <input type="date" id="to-date" required>
-        </div>
-        <div class="form-group">
-            <label>Mode of Transport:</label>
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="transport" value="Flight"> Flight</label>
-                <label><input type="checkbox" name="transport" value="Train"> Train</label>
-                <label><input type="checkbox" name="transport" value="Car"> Car</label>
-                <label><input type="checkbox" name="transport" value="Bus"> Bus</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="travelers">Number of Travelers:</label>
-            <input type="number" id="travelers" required>
-        </div>
-        <div class="form-group">
-            <label for="budget">Budget Range:</label>
-            <select id="budget">
-                <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
-                <option value="High">High</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Traveler Interests:</label>
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="interests" value="History"> History</label>
-                <label><input type="checkbox" name="interests" value="Culture"> Culture</label>
-                <label><input type="checkbox" name="interests" value="Food"> Food</label>
-                <label><input type="checkbox" name="interests" value="Nature"> Nature</label>
-                <label><input type="checkbox" name="interests" value="Adventure"> Adventure</label>
-                <label><input type="checkbox" name="interests" value="Shopping"> Shopping</label>
-                <label><input type="checkbox" name="interests" value="Nightlife"> Nightlife</label>
-                <label><input type="checkbox" name="interests" value="Family-friendly"> Family-friendly</label>
-                <label><input type="checkbox" name="interests" value="Budget travel"> Budget travel</label>
-                <label><input type="checkbox" name="interests" value="Luxury"> Luxury</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="meal-pref">Meal Preference:</label>
-            <select id="meal-pref">
-                <option value="Vegetarian">Vegetarian</option>
-                <option value="Non-Vegetarian">Non-Vegetarian</option>
-                <option value="Mixed">Mixed</option>
-                <option value="Other">Other</option>
-            </select>
-        </div>
-        <button type="submit">Generate Itinerary</button>
-    </form>
+    <h1>Kerala Nature-Focused Itinerary</h1>
+    <p><strong>From:</strong> Vadodara &nbsp;&nbsp; <strong>To:</strong> Kerala</p>
+    <p><strong>Dates:</strong> 2023-10-23 to 2023-10-30</p>
+    <p><strong>Transport:</strong> Train &nbsp;&nbsp; <strong>Budget:</strong> Medium &nbsp;&nbsp; <strong>Meal Preference:</strong> Vegetarian</p>
+    <hr>
 
-    <div id="itinerary-output"></div>
-
-    <script>
-        document.getElementById("travel-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const source = document.getElementById("source").value;
-            const destination = document.getElementById("destination").value;
-            const fromDate = document.getElementById("from-date").value;
-            const toDate = document.getElementById("to-date").value;
-            const transport = Array.from(document.querySelectorAll("input[name='transport']:checked")).map(el => el.value).join(", ");
-            const travelers = document.getElementById("travelers").value;
-            const budget = document.getElementById("budget").value;
-            const interests = Array.from(document.querySelectorAll("input[name='interests']:checked")).map(el => el.value).join(", ");
-            const mealPref = document.getElementById("meal-pref").value;
-
-            const itinerary = `
-                <h2>Sample Itinerary</h2>
-                <p><strong>From:</strong> ${source}</p>
-                <p><strong>To:</strong> ${destination}</p>
-                <p><strong>Dates:</strong> ${fromDate} to ${toDate}</p>
-                <p><strong>Transport:</strong> ${transport}</p>
-                <p><strong>Travelers:</strong> ${travelers}</p>
-                <p><strong>Budget:</strong> ${budget}</p>
-                <p><strong>Interests:</strong> ${interests}</p>
-                <p><strong>Meal Preference:</strong> ${mealPref}</p>
-                <p><strong>Weather Forecast:</strong> Sample weather data will appear here.</p>
-                <p><strong>Meal Stops:</strong> Sample vegetarian restaurants in ${destination}.</p>
-            `;
-            document.getElementById("itinerary-output").innerHTML = itinerary;
-        });
-    </script>
+    <div class="day-card">
+        <h2>23 Oct 2023 (Monday)</h2>
+        <div class="section"><strong>🌅 Morning:</strong> Explore local nature spots 🌿</div>
+        <div class="section"><strong>🌞 Afternoon:</strong> Visit a scenic viewpoint or park 🌞</div>
+        <div class="section"><strong>🌆 Evening:</strong> Enjoy a peaceful walk or cultural show 🌆</div>
+        <div class="section"><strong>🍽️ Meals:</strong> Vegetarian meal at recommended local restaurant 🍽️</div>
+        <div class="section"><strong>🌦️ Weather:</strong> Partly cloudy with chances of rain 🌦️</div>
+        <div class="section"><strong>📝 Notes:</strong> Carry water, wear comfortable shoes, and check local weather updates.</div>
+    </div>
+    
+    <div class="day-card">
+        <h2>24 Oct 2023 (Tuesday)</h2>
+        <div class="section"><strong>🌅 Morning:</strong> Explore local nature spots 🌿</div>
+        <div class="section"><strong>🌞 Afternoon:</strong> Visit a scenic viewpoint or park 🌞</div>
+        <div class="section"><strong>🌆 Evening:</strong> Enjoy a peaceful walk or cultural show 🌆</div>
+        <div class="section"><strong>🍽️ Meals:</strong> Vegetarian meal at recommended local restaurant 🍽️</div>
+        <div class="section"><strong>🌦️ Weather:</strong> Partly cloudy with chances of rain 🌦️</div>
+        <div class="section"><strong>📝 Notes:</strong> Carry water, wear comfortable shoes, and check local weather updates.</div>
+    </div>
+    
+    <div class="day-card">
+        <h2>25 Oct 2023 (Wednesday)</h2>
+        <div class="section"><strong>🌅 Morning:</strong> Explore local nature spots 🌿</div>
+        <div class="section"><strong>🌞 Afternoon:</strong> Visit a scenic viewpoint or park 🌞</div>
+        <div class="section"><strong>🌆 Evening:</strong> Enjoy a peaceful walk or cultural show 🌆</div>
+        <div class="section"><strong>🍽️ Meals:</strong> Vegetarian meal at recommended local restaurant 🍽️</div>
+        <div class="section"><strong>🌦️ Weather:</strong> Partly cloudy with chances of rain 🌦️</div>
+        <div class="section"><strong>📝 Notes:</strong> Carry water, wear comfortable shoes, and check local weather updates.</div>
+    </div>
+    
+    <div class="day-card">
+        <h2>26 Oct 2023 (Thursday)</h2>
+        <div class="section"><strong>🌅 Morning:</strong> Explore local nature spots 🌿</div>
+        <div class="section"><strong>🌞 Afternoon:</strong> Visit a scenic viewpoint or park 🌞</div>
+        <div class="section"><strong>🌆 Evening:</strong> Enjoy a peaceful walk or cultural show 🌆</div>
+        <div class="section"><strong>🍽️ Meals:</strong> Vegetarian meal at recommended local restaurant 🍽️</div>
+        <div class="section"><strong>🌦️ Weather:</strong> Partly cloudy with chances of rain 🌦️</div>
+        <div class="section"><strong>📝 Notes:</strong> Carry water, wear comfortable shoes, and check local weather updates.</div>
+    </div>
+    
+    <div class="day-card">
+        <h2>27 Oct 2023 (Friday)</h2>
+        <div class="section"><strong>🌅 Morning:</strong> Explore local nature spots 🌿</div>
+        <div class="section"><strong>🌞 Afternoon:</strong> Visit a scenic viewpoint or park 🌞</div>
+        <div class="section"><strong>🌆 Evening:</strong> Enjoy a peaceful walk or cultural show 🌆</div>
+        <div class="section"><strong>🍽️ Meals:</strong> Vegetarian meal at recommended local restaurant 🍽️</div>
+        <div class="section"><strong>🌦️ Weather:</strong> Partly cloudy with chances of rain 🌦️</div>
+        <div class="section"><strong>📝 Notes:</strong> Carry water, wear comfortable shoes, and check local weather updates.</div>
+    </div>
+    
+    <div class="day-card">
+        <h2>28 Oct 2023 (Saturday)</h2>
+        <div class="section"><strong>🌅 Morning:</strong> Explore local nature spots 🌿</div>
+        <div class="section"><strong>🌞 Afternoon:</strong> Visit a scenic viewpoint or park 🌞</div>
+        <div class="section"><strong>🌆 Evening:</strong> Enjoy a peaceful walk or cultural show 🌆</div>
+        <div class="section"><strong>🍽️ Meals:</strong> Vegetarian meal at recommended local restaurant 🍽️</div>
+        <div class="section"><strong>🌦️ Weather:</strong> Partly cloudy with chances of rain 🌦️</div>
+        <div class="section"><strong>📝 Notes:</strong> Carry water, wear comfortable shoes, and check local weather updates.</div>
+    </div>
+    
+    <div class="day-card">
+        <h2>29 Oct 2023 (Sunday)</h2>
+        <div class="section"><strong>🌅 Morning:</strong> Explore local nature spots 🌿</div>
+        <div class="section"><strong>🌞 Afternoon:</strong> Visit a scenic viewpoint or park 🌞</div>
+        <div class="section"><strong>🌆 Evening:</strong> Enjoy a peaceful walk or cultural show 🌆</div>
+        <div class="section"><strong>🍽️ Meals:</strong> Vegetarian meal at recommended local restaurant 🍽️</div>
+        <div class="section"><strong>🌦️ Weather:</strong> Partly cloudy with chances of rain 🌦️</div>
+        <div class="section"><strong>📝 Notes:</strong> Carry water, wear comfortable shoes, and check local weather updates.</div>
+    </div>
+    
+    <div class="day-card">
+        <h2>30 Oct 2023 (Monday)</h2>
+        <div class="section"><strong>🌅 Morning:</strong> Explore local nature spots 🌿</div>
+        <div class="section"><strong>🌞 Afternoon:</strong> Visit a scenic viewpoint or park 🌞</div>
+        <div class="section"><strong>🌆 Evening:</strong> Enjoy a peaceful walk or cultural show 🌆</div>
+        <div class="section"><strong>🍽️ Meals:</strong> Vegetarian meal at recommended local restaurant 🍽️</div>
+        <div class="section"><strong>🌦️ Weather:</strong> Partly cloudy with chances of rain 🌦️</div>
+        <div class="section"><strong>📝 Notes:</strong> Carry water, wear comfortable shoes, and check local weather updates.</div>
+    </div>
+    
 </body>
 </html>
